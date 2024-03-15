@@ -6,11 +6,9 @@ include '../../../server/admin/get_events.php';
 session_start();
 
 if (isset($_SESSION['admin_nome']) && isset($_SESSION['admin_cognome'])) {
-    // Retrieve first name and last name from session
     $admin_nome = $_SESSION['admin_nome'];
     $admin_cognome = $_SESSION['admin_cognome'];
 } else {
-    // Redirect if session variables are not set
     header("Location: login.php");
     exit;
 }
@@ -35,11 +33,10 @@ if (isset($_SESSION['admin_nome']) && isset($_SESSION['admin_cognome'])) {
     <?php include '../../common/components/navbarAdmin.php'; ?>
 
     <div class='top-container'>
-        <div class="title">Welcome, <?php echo $admin_nome . ' ' . $admin_cognome; ?></div>
+        <div class="title">Benvenuto, <?php echo $admin_nome . ' ' . $admin_cognome; ?></div>
 
-        <div class="title">Ciao NOME ecco i tuoi eventi amministratore</div>
         <div class='form-container'>
-            <button id="toggle-form-button" class="join-button add-event-button">Add Event</button>
+            <button id="toggle-form-button" class="join-button add-event-button">Aggiungi Evento</button>
 
             <div id="event-form-container" style="display: none;">
                 <form action="../../../server/admin/add_event.php" method="POST">
@@ -48,17 +45,17 @@ if (isset($_SESSION['admin_nome']) && isset($_SESSION['admin_cognome'])) {
                         <input type="text" id="nome_evento" name="nome_evento" required>
                     </div>
                     <div class="form-group">
-                        <label for="attendees">Attendees:</label>
+                        <label for="attendees">Partecipanti:</label>
                         <input type="text" name="attendees" id="attendees" required>
                     </div>
                     <div class="form-group">
                         <label for="data_evento" id="data_evento_label">Data Evento:</label>
                         <input type="date" name="data_evento" id="data_evento" min="<?php echo date('Y-m-d'); ?>">
                     </div>
-                    <input type="submit" value="Submit" class="join-button add-event-button">
+                    <input type="submit" value="Invia" class="join-button add-event-button">
                 </form>
 
-                <p id="form-text" style="display: none;">Form is opened</p>
+                <p id="form-text" style="display: none;">Il modulo è aperto</p>
             </div>
         </div>
         <div class="card-container">
@@ -66,15 +63,16 @@ if (isset($_SESSION['admin_nome']) && isset($_SESSION['admin_cognome'])) {
                 <div class="card" id="<?php echo $event['id']; ?>">
                     <h2 class="title1"><?php echo $event['nome_evento']; ?></h2>
                     <p class="date"><?php echo $event['data_evento']; ?></p>
-                    <button class="join-button edit-button" data-event-id="<?php echo $event['id']; ?>">Edit</button>
-                    <div class="edit-form" style="display: none;">
+                    <button class="join-button edit-button" data-event-id="<?php echo $event['id']; ?>">Modifica</button>
+                    <div class="edit-form" id="edit-form-<?php echo $event['id']; ?>" style="display: none;">
+
                         <form id="eventForm_<?php echo $event['id']; ?>" method='POST' action='../../../server/admin/editEvent.php'>
                             <div class="form-group">
                                 <label for="nome_evento">Nome Evento:</label>
                                 <input type="text" name="nome_evento" value="<?php echo $event['nome_evento']; ?>" required>
                             </div>
                             <div class="form-group">
-                                <label for="attendees">Attendees:</label>
+                                <label for="attendees">Partecipanti:</label>
                                 <input type="text" name="attendees" value="<?php echo $event['attendees']; ?>" required>
                             </div>
                             <div class="form-group">
@@ -83,8 +81,8 @@ if (isset($_SESSION['admin_nome']) && isset($_SESSION['admin_cognome'])) {
                             </div>
                             <input type="hidden" name="id" value="<?php echo $event['id']; ?>">
                             <div class='btn-container'>
-                                <button type="submit" class="join-button add-event-button update-btn">Update</button>
-                                <button type="button" class="join-button add-event-button delete-btn">Delete</button>
+                                <button type="submit" class="join-button add-event-button update-btn">Aggiorna</button>
+                                <button type="button" class="join-button add-event-button delete-btn">Elimina</button>
 
                             </div>
                         </form>

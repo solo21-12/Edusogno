@@ -34,7 +34,7 @@ $error_message = isset($_GET['error']) ? $_GET['error'] : '';
     <form method="POST" action="../../../server/admin/login_user.php" class="container">
       <div class="form-group">
         <label for="email">Inserisci l’e-mail</label>
-        <input type="email" name="email" id="email" placeholder="name@example.com" />
+        <input type="email" name="email" id="email" placeholder="inserisci@example.com" />
       </div>
       <div class="form-group">
         <label for="password">Inserisci la password</label>

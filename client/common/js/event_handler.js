@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  const updateButtons = document.querySelectorAll(".update-btn");
 
   const deleteButtons = document.querySelectorAll(".delete-btn");
   deleteButtons.forEach((button) => {
@@ -71,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then((data) => {
           console.log(data);
-          // Refresh the page
           location.reload();
         })
         .catch((error) => {

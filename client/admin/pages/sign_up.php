@@ -29,15 +29,15 @@ $error_message = isset($_GET['error']) ? $_GET['error'] : '';
     <form method='POST' action="../../../server/admin/register_user.php" class="container" onsubmit="return validateForm()">
       <div class="form-group">
         <label for="nome">Inserisci il nome</label>
-        <input type="text" id="nome" name="nome" placeholder="Mario" required />
+        <input type="text" id="nome" name="nome" placeholder="Nome" required />
       </div>
       <div class="form-group">
         <label for="cognome">Inserisci il cognome</label>
-        <input type="text" id="cognome" name="cognome" placeholder="Rossi" required />
+        <input type="text" id="cognome" name="cognome" placeholder="Cognome" required />
       </div>
       <div class="form-group">
         <label for="email">Inserisci l’email</label>
-        <input type="email" id="email" name="email" placeholder="name@example.com" required />
+        <input type="email" id="email" name="email" placeholder="nome@example.com" required />
         <span id="email-error" class="error"></span>
       </div>
       <div class="form-group">

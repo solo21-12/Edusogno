@@ -17,6 +17,30 @@ function getConnection()
             password VARCHAR(255)
         )');
 
+        // Insert people if they are not already in the utenti table
+        $people = [
+            ['Marco', 'Rossi', 'ulysses200915@varen8.com', 'Edusogno123'],
+            ['Filippo', 'D’Amelio', 'qmonkey14@falixiao.com', 'Edusogno?123'],
+            ['Gian Luca', 'Carta', 'mavbafpcmq@hitbase.net', 'EdusognoCiao'],
+            ['Stella', 'De Grandis', 'dgipolga@edume.me', 'EdusognoGia']
+        ];
+
+        foreach ($people as $person) {
+            $email = $person[2];
+            $count = $pdo->prepare('SELECT COUNT(*) FROM utenti WHERE email = :email');
+            $count->bindParam(':email', $email);
+            $count->execute();
+
+            if ($count->fetchColumn() === 0) {
+                $insert = $pdo->prepare('INSERT INTO utenti (nome, cognome, email, password) VALUES (:nome, :cognome, :email, :password)');
+                $insert->bindParam(':nome', $person[0]);
+                $insert->bindParam(':cognome', $person[1]);
+                $insert->bindParam(':email', $person[2]);
+                $insert->bindParam(':password', $person[3]);
+                $insert->execute();
+            }
+        }
+
         $pdo->exec('CREATE TABLE IF NOT EXISTS eventi (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             attendees TEXT,
@@ -39,17 +63,7 @@ function getConnection()
             FOREIGN KEY (event_id) REFERENCES eventi(id)
         )');
 
-        $result = $pdo->query('SELECT COUNT(*) FROM eventi');
-        $count = $result->fetchColumn();
 
-        if ($count === 0) {
-            $pdo->exec("
-                INSERT INTO `eventi`(`attendees`, `nome_evento`, `data_evento`) VALUES 
-                ('ulysses200915@varen8.com,qmonkey14@falixiao.com,mavbafpcmq@hitbase.net','Test Edusogno 1', '2022-10-13 14:00'), 
-                ('dgipolga@edume.me,qmonkey14@falixiao.com,mavbafpcmq@hitbase.net','Test Edusogno 2', '2022-10-15 19:00'), 
-                ('dgipolga@edume.me,ulysses200915@varen8.com,mavbafpcmq@hitbase.net','Test Edusogno 2', '2022-10-15 19:00')
-            ");
-        }
 
         return $pdo;
     } catch (PDOException $e) {

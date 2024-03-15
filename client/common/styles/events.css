@@ -166,6 +166,7 @@ input {
 
 .edit-form {
   max-width: 200px;
+  flex-grow: none;
 }
 
 .btn-container {
@@ -183,3 +184,5 @@ input {
   transform: translate(-50%, -50%);
   z-index: 9999;
 }
+
+

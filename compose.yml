@@ -1,17 +1,6 @@
-version: '3'
+version: "3"
 services:
   smtp:
     image: namshi/smtp
     ports:
-      - "1025:1025"  # SMTP port
-
-  php_server:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "800:80"  # Adjust the port as needed
-    volumes:
-      - ./client:/var/www/html  # Mount your client directory to the web server's document root
-    depends_on:
-      - smtp
+      - "1025:1025"

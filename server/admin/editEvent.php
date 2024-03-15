@@ -1,13 +1,16 @@
 <?php
 require_once '../../db/connection.php';
+require_once 'event_modified_notifier.php';
 
 class EditEvent
 {
     private $conn;
+    private $eventNotifier;
 
     public function __construct()
     {
         $this->conn = getConnection();
+        $this->eventNotifier = new EventNotifier();
     }
 
     public function editEvent($id, $attendees, $nome_evento, $data_evento)
@@ -19,7 +22,8 @@ class EditEvent
         $stmt->bindParam(4, $id);
         $stmt->execute();
         $stmt->closeCursor();
-        
+
+        $this->eventNotifier->notifyUsers($nome_evento, $data_evento);
     }
 }
 
@@ -38,4 +42,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     exit();
 }
-?>
