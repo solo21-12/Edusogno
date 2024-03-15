@@ -1,0 +1,47 @@
+<?php
+require_once '../../db/connection.php';
+
+class UserRegistration {
+    private $conn;
+
+    public function __construct() {
+        $this->conn = getConnection();
+    }
+
+    public function registerUser($nome, $cognome, $email, $password) {
+        // Check if the email already exists
+        $stmt = $this->conn->prepare("SELECT COUNT(*) FROM utenti WHERE email = ?");
+        $stmt->bindParam(1, $email);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+
+        if ($count > 0) {
+            header("Location: ../../client/user/pages/sign_up.php?error=User with this email already exists.");
+            exit();
+        }
+
+        $stmt = $this->conn->prepare("INSERT INTO utenti (nome, cognome, email, password) VALUES (?, ?, ?, ?)");
+
+        $stmt->bindParam(1, $nome);
+        $stmt->bindParam(2, $cognome);
+        $stmt->bindParam(3, $email);
+        $stmt->bindParam(4, $password);
+
+        $stmt->execute();
+
+        $stmt->closeCursor();
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome = $_POST['nome'];
+    $cognome = $_POST['cognome'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $userRegistration = new UserRegistration();
+    $userRegistration->registerUser($nome, $cognome, $email, $password);
+
+    header("Location: ../../client/user/pages/login.php");
+    exit();
+}

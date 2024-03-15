@@ -1,0 +1,180 @@
+body {
+  background-color: #f2f2f2;
+}
+
+.top-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  align-items: center;
+  border: 1px solid #134077;
+  border-radius: 19px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 auto;
+  max-width: 662px;
+  padding: 60px;
+  text-align: center;
+  width: 90%;
+}
+
+.create-account {
+  background: #134077;
+  color: white;
+  font-family: "DM Sans", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  height: 32px;
+  letter-spacing: 0em;
+  line-height: 32px;
+  text-align: center;
+  width: 295px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.form-group input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #2d224c;
+  color: gray;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.7;
+  outline: none;
+  padding: 10px 0;
+  width: 100%;
+  padding-right: 30px; /* Added padding for the icon */
+}
+
+.form-group label {
+  color: #231f20;
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 12.94px;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.header {
+  align-items: center;
+  background-color: lightgray;
+  color: black;
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.login-link {
+  color: #2d224c;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 12.94px;
+  margin-top: 40px;
+  text-align: center;
+  text-decoration: underline;
+  width: 100%;
+}
+
+.login-link-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.login-link a {
+  color: #2d224c;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  text-decoration: none;
+}
+
+.register-button {
+  background-color: #0057ff;
+  border: none;
+  border-radius: 11px;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  height: 59px;
+  line-height: 19.9px;
+  margin-top: 20px;
+  padding: 10px;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.register-button:hover {
+  background-color: #0046d6;
+}
+
+.title {
+  align-items: center;
+  color: #134077;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 31.84px;
+  margin-bottom: 20px;
+}
+.error {
+  color: red;
+  margin-top: 5px;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+  color: #0057ff;
+}
+
+@media (max-width: 556px) {
+  .container {
+    max-width: 250px;
+    width: 90%;
+  }
+
+  .create-account {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .register-button {
+    font-size: 16px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 560px) and (max-width: 884px) {
+  .container {
+    max-width: 400px;
+    width: 90%;
+  }
+}

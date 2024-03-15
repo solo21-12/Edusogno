@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:Edusogno}/db/database.sqlite",
+            "name": "user"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
