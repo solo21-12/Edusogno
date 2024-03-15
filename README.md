@@ -1,8 +1,7 @@
 # Edusogno
-# App Name
 
 ## Introduction
-Welcome to the App Name! This is a web application built entirely with HTML, CSS, JavaScript, and PHP. It uses SQLite as its database. In this README, you will find instructions on how to use the app.
+Welcome to the Edusogno! This is a web application built entirely with HTML, CSS, JavaScript, and PHP. It uses SQLite as its database. In this README, you will find instructions on how to use the app.
 
 ## User Section
 To access the user section of the app, follow these steps:
@@ -21,6 +20,6 @@ In order for the email server to work, you need to start the Docker Compose file
 
 Please note that the email server will only work after running the Docker Compose file.
 
-That's it! You are now ready to use the App Name. If you have any questions or need further assistance, please don't hesitate to reach out.
+That's it! You are now ready to use the Edusogno app. If you have any questions or need further assistance, please don't hesitate to reach out.
 
 Happy exploring!
