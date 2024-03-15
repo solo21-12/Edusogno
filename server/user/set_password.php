@@ -8,35 +8,32 @@ class PasswordSetterServer
 
     public function __construct()
     {
-        $this->db = getConnection(); // Use the connection from connection.php
+        $this->db = getConnection();
     }
 
     public function setPassword($email, $password)
     {
-        // Check if the user exists in the database
         $query = "SELECT * FROM utenti WHERE email = :email";
         $statement = $this->db->prepare($query);
         $statement->bindValue(':email', $email);
         $statement->execute();
 
-        $result = $statement->fetch(); // Fetch a single row
+        $result = $statement->fetch();
 
         if ($result) {
-            // Update the password for the user
             $query = "UPDATE utenti SET password = :password WHERE email = :email";
             $statement = $this->db->prepare($query);
             $statement->bindValue(':password', $password);
             $statement->bindValue(':email', $email);
             $statement->execute();
 
-            return true; // Password updated successfully
+            return true;
         }
 
-        return false; // User not found
+        return false;
     }
 }
 
-// Usage example
 $server = new PasswordSetterServer();
 $email = $_POST['email'];
 $password = $_POST['password'];

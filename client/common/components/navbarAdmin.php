@@ -13,9 +13,11 @@ $indexUrl = "{$basePath}/../../admin/pages/index.php";
         </p>
     </a>
     <?php
-    if (isset($_COOKIE['admin'])) {
+    session_start();
+    if (isset($_SESSION['admin_id'])) {
         if (isset($_GET['logout'])) {
-            setcookie('admin', '', time() - 3600, '/');
+            session_unset();
+            session_destroy();
             header('Location: login.php');
             exit;
         }

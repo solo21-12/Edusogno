@@ -24,7 +24,7 @@ function validateForm() {
     passwordError.textContent = "";
   }
 
-  // Email validation
+ 
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     emailError.textContent = "Invalid email format";

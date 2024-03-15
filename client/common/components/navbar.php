@@ -8,9 +8,11 @@
         </p>
     </a>
     <?php
-    if (isset($_COOKIE['user'])) {
+    session_start();
+    if (isset($_SESSION['user_id'])) {
         if (isset($_GET['logout'])) {
-            setcookie('user', '', time() - 3600, '/');
+            session_unset();
+            session_destroy();
             header('Location: login.php');
             exit;
         }

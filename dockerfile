@@ -1,5 +1,11 @@
 # Use an official PHP image as the base image
-FROM php:7.4-apache
+FROM php:7.4-apache-buster
+
+# Copy the custom Apache configuration file into the container
+COPY apache.conf /etc/apache2/conf-available/
+
+# Enable the custom configuration
+RUN a2enconf apache
 
 # Set the working directory inside the container
 WORKDIR /var/www/html

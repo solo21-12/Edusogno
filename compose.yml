@@ -10,7 +10,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "80:80"  # Adjust the port as needed
+      - "800:80"  # Adjust the port as needed
     volumes:
       - ./client:/var/www/html  # Mount your client directory to the web server's document root
     depends_on:
